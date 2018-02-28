@@ -1,0 +1,3 @@
+rootProject.name = 'LoginHeroku'
+
+include ':app'
