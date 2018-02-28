@@ -22,7 +22,7 @@ $email = $obj['email'];
 $password = $obj['password'];
 
 //Checking Email is already exist or not using SQL query.
-$CheckSQL = "SELECT * FROM UserRegistrationTable WHERE email='$email'";
+$CheckSQL = "SELECT * FROM user WHERE email='$email'";
 
 // Executing SQL Query.
 $check = mysqli_fetch_array(mysqli_query($con,$CheckSQL));
