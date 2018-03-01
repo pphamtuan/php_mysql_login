@@ -39,7 +39,7 @@ export default class LoginScreen extends Component {
            .then((responseJson) => {
             //decode json
                          // If server response message same as Data Matched
-            if(message === 'Data Matched')
+            if(responseJson.message === 'Data Matched')
              {
       
                  //Then open Profile activity and send user email to profile activity.
