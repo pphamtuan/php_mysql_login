@@ -30,6 +30,7 @@ if(isset($check)){
     //$type = $check['type'];
     $SuccessLoginMsg = 'Data Matched';
     $data = array('message'=>'Data Matched');
+    $dataJson = json_encode($data);
 
     //$obj->message = 'Data Matched';
     //$obj->type = $type;
@@ -40,7 +41,7 @@ if(isset($check)){
 
 // Echo the message.
     //echo $SuccessLoginJson ;
-    echo $data;
+    echo $dataJson;
     //echo $typeJson;
     //echo $myJson;
 
