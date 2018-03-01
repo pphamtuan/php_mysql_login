@@ -37,7 +37,7 @@ export default class LoginScreen extends Component {
       
      }).then((response) => response.json())
            .then((responseJson) => {
-             alert(responseJson.message);
+             alert(responseJson.type);
             //decode json
                          // If server response message same as Data Matched
             if(true)
