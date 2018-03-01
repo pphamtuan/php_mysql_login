@@ -31,7 +31,7 @@ if(isset($check)){
     $SuccessLoginMsg = 'Data Matched';
 
     $obj->message = "Data Matched";
-    $obj->type = $type;
+    //$obj->type = $type;
     // Converting the message into JSON format.
     //$SuccessLoginJson = json_encode($SuccessLoginMsg);
     //$typeJson = json_encode($type);
