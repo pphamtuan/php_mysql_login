@@ -1,5 +1,4 @@
 import { AppRegistry } from 'react-native';
-import MapScreen from './src/MapScreen/MapScreen';
-import LoginScreen from './src/LoginScreen/LoginScreen';
+import App from './App';
 
-AppRegistry.registerComponent('DemoMapView', () => LoginScreen);
+AppRegistry.registerComponent('DemoMapView', () => App);

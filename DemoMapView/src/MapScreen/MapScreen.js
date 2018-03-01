@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import {Platform, StyleSheet, Text, View} from 'react-native';
 import MapView, {Marker, onRegionChange, onPress} from 'react-native-maps';
 
-export default class App extends Component {
+export default class MapScreen extends Component {
   constructor(props){
     super(props);
     arrayMarkers = [

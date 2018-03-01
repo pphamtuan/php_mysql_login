@@ -27,13 +27,17 @@ $check = mysqli_fetch_array(mysqli_query($con,$Sql_Query));
 
 if(isset($check)){
 
+    $type = $check['type'];
     $SuccessLoginMsg = 'Data Matched';
+
 
     // Converting the message into JSON format.
     $SuccessLoginJson = json_encode($SuccessLoginMsg);
+    $typeJson = json_encode($type);
 
 // Echo the message.
     echo $SuccessLoginJson ;
+    echo $typeJson;
 
 }
 

@@ -1,22 +1,18 @@
 import React, { Component } from 'react'; 
 import { AppRegistry, StyleSheet, TextInput, View, Alert, Button, Text} from 'react-native';
 
-// Importing Stack Navigator library to add multiple activities.
-import { StackNavigator } from 'react-navigation';
-import MapScreen from '../MapScreen/MapScreen';
-
 export default class LoginScreen extends Component {
     // Setting up Login Activity title.
     static navigationOptions =
      {
-        title: 'LoginActivity',
+        title: 'Đăng nhập',
      };
    
   constructor(props) {   
       super(props);   
       this.state = {   
         UserEmail: '',
-        UserPassword: ''   
+        UserPassword: ''         
       }   
     }
 
@@ -48,6 +44,7 @@ export default class LoginScreen extends Component {
       
                  //Then open Profile activity and send user email to profile activity.
                  this.props.navigation.navigate('Second', { Email: UserEmail });
+                // <MapScreen/>
       
              }
              else{
@@ -123,10 +120,3 @@ export default class LoginScreen extends Component {
       marginBottom: 15
      }
     });
-
-    export const MainProject = StackNavigator(
-      {
-          First: {screen: LoginScreen},
-          Second: {screen: MapScreen}
-      }
-  )
