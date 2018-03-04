@@ -32,7 +32,7 @@ export default class FetchBlob extends Component{
             { name : 'info', data : 'Hello'}])
         .then((respone) => respone.json)
             .then((responeJson)=>{
-                alert(responeJson.message);
+                alert(responeJson);
             })
         .catch(error => console.log(error))
     }
