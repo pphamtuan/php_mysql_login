@@ -1,6 +1,7 @@
 
 import React, { Component } from 'react';
-import {Platform, StyleSheet, Text, View} from 'react-native';
+import {Platform, StyleSheet} from 'react-native';
+import {Text, View, Header} from 'native-base';
 import MapView, {Marker, onRegionChange, onPress} from 'react-native-maps';
 
 export default class MapScreen extends Component {
@@ -52,6 +53,7 @@ export default class MapScreen extends Component {
   render() {
     return (
       <View style={styles.container}>
+        <Text>Hello</Text>
         <MapView
           style = {styles.map}
           region = {this.state.region}

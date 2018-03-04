@@ -4,6 +4,23 @@ import {Container, Header, Title, Body, Right, Content,  Button, Text, Icon} fro
 
 import RNFetchBlob from 'react-native-fetch-blob';
 
+const fontAwesome = {
+    family: 'FontAwesome',
+    iconFontSize: 30,
+    iconMargin: 7,
+    iconLineHeight: 33
+};
+
+var ImagePicker = require('react-native-image-picker');
+var options = {
+    title: 'Select a photo',
+    takePhotoButtonTitle: 'Take a Photo',
+    chooseFromLibraryButtonTitle: 'Choose from gallery',
+    quality: 1
+  };
+
+  
+
 export default class FetchBlob extends Component{
     render(){
         return(
@@ -14,10 +31,13 @@ export default class FetchBlob extends Component{
                     </Body>
                 </Header>
                 <Content>
-                    <Button iconRight onPress = {this.upload.bind(this)}>
-                        <Icon name = 'home'></Icon>
-                        <Text>Show Image</Text>
-                    </Button>
+                    <Container style = {{justifyContent: 'flex-start', alignItems: 'center'}}>
+                        <Button iconRight onPress = {this.upload.bind(this)}
+                                style = {{alignSelf: 'center'}}>
+                            <Icon family = 'FontAwesome' name = 'image' ></Icon>
+                            <Text>Select</Text>
+                        </Button>
+                    </Container>
                 </Content>
             </Container>
         );
