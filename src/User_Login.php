@@ -19,7 +19,7 @@ $email = $obj['email'];
 $password = $obj['password'];
 
 //Applying User Login query with email and password match.
-$Sql_Query = "select * from user where email = '$ma_so' and password = '$password' ";
+$Sql_Query = "select * from user where ma_so = '$email' and password = '$password' ";
 
 // Executing SQL Query.
 $check = mysqli_fetch_array(mysqli_query($con,$Sql_Query));
