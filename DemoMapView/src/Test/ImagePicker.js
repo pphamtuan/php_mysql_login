@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {StyleSheet} from 'react-native';
+import {StyleSheet, Image} from 'react-native';
 import {Container, Text, Header, Title, Left, Right, Icon, Body, Content, Button} from 'native-base';
 import pickerImage from './ImagePickerAPI';
 import RNFetchBlob from 'react-native-fetch-blob';
@@ -13,6 +13,11 @@ import RNFetchBlob from 'react-native-fetch-blob';
           }
       }
       render(){
+          let img = this.state.avatarSource == null? null:
+            <Image
+                source = {this.state.avatarSource}
+                style = {{height: 200, width: 100}}
+            />
           return(
               <Container>
                   <Header>                     
@@ -22,12 +27,13 @@ import RNFetchBlob from 'react-native-fetch-blob';
                   </Body>
                   <Content style = {{flex: 1, }}>                      
                       <Button primary style = {{flex: 1, alignSelf: 'center' }} 
-                        onPress = {this.show.bind()}>
+                        onPress = {this.show.bind(this)}>
                         <Text>Show Image</Text>                        
                       </Button>
                       <Button onPress = {this.upload.bind(this)}>
                           <Text>Upload</Text>
                       </Button>
+                      {img}
                   </Content>
               </Container>
           );
@@ -43,7 +49,7 @@ import RNFetchBlob from 'react-native-fetch-blob';
             'Content-Type' : 'multipart/form-data',
           }, [
                 { name : 'info', data : 'KhoaPham'},
-                { name : 'avatar', filename : 'avatar.png', data: this.state.data},
+                { name : 'image', filename : 'image.png', type: 'image/png', data: this.state.data},
         ])
           .then(res => console.log(res))
           .catch(err => console.log(err))

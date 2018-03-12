@@ -26,7 +26,9 @@ export default class App extends Component {
       currentPosition: {
         latitude: 100,
         longitude: 100
-      }
+      },
+      avatarSource: null,
+              data: null
     }
   }
 
@@ -153,7 +155,7 @@ componentWillMount(){
                     alignSelf: 'flex-end',  
                     flexDirection: 'column', justifyContent: 'flex-end', marginBottom: 10,
                     marginRight: 10}}
-                    onPress = {this.show.bind()}
+                    onPress = {this.show.bind(this)}
                      >
                       <Icon name = 'camera' style = {{fontSize: 30}}></Icon>        
                 </Button>
@@ -164,8 +166,21 @@ componentWillMount(){
     );
   }
   show(){
-    pickerImage(source=>this.setState({avatarSource: source}));
+    pickerImage((source,data)=>this.setState({avatarSource: source, data: data}));
   } 
+  upload(){
+    RNFetchBlob.fetch('POST', 'http://login-mysql.herokuapp.com/src/upload.php', {
+        Authorization : "Bearer access-token",
+        otherHeader : "foo",
+        // this is required, otherwise it won't be process as a multipart/form-data request
+        'Content-Type' : 'multipart/form-data',
+      }, [
+            { name : 'info', data : 'KhoaPham'},
+            { name : 'avatar', filename : 'avatar.png', data: this.state.data},
+    ])
+      .then(res => console.log(res))
+      .catch(err => console.log(err))
+  }
   
 }
 

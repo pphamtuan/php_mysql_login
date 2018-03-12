@@ -5,4 +5,4 @@ import FetchBlob from './src/Test/FetchBLob';
 import myTab from './src/Tabbar';
 
 
-AppRegistry.registerComponent('DemoMapView', () => ImagePickerApp);
+AppRegistry.registerComponent('DemoMapView', () => myTab);
