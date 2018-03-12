@@ -16,6 +16,7 @@ function connectDatabase($HostName,$HostUser,$HostPass,$DatabaseName)
 }
 
 $db = connectDatabase($HostName,$HostUser,$HostPass,$DatabaseName);
+/*
 $email = 'vansang@gmail.com';
 $CheckSQL = "SELECT * FROM user WHERE email='$email'";
 
@@ -26,5 +27,5 @@ if ((isset($check))){
     echo 'Correct'.PHP_EOL;
     echo $check['type'].PHP_EOL;
 }
-
+*/
 ?>

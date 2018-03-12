@@ -1,15 +1,15 @@
 <?php
 
 //Define your host here.
-$HostName = "sql9.freemysqlhosting.net";
+$HostName = "databases.000webhost.com";
 
 //Define your database name here.
-$DatabaseName = "sql9223786";
+$DatabaseName = "id5005754_user";
 
 //Define your database username here.
-$HostUser = "sql9223786";
+$HostUser = "id5005754_blended";
 
 //Define your database password here.
-$HostPass = "4lD3NFxe2g";
+$HostPass = "1a241091630B";
 
 ?>

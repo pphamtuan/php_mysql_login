@@ -2,9 +2,6 @@ var ImagePicker = require('react-native-image-picker');
 // More info on all the options is below in the README...just some common use cases shown here
 var options = {
     title: 'Chọn hình ảnh',
-    customButtons: [
-      {name: 'fb', title: 'Choose Photo from Facebook'},
-    ],
     storageOptions: {
       skipBackup: true,
       path: 'images'

@@ -22,7 +22,7 @@ export default class LoginScreen extends Component {
       const { UserPassword }  = this.state ;
       
       
-     fetch('https://login-mysql.herokuapp.com/src/User_Login.php', {
+     fetch('https://myfirstprivatewebsite.000webhostapp.com/login.php', {
        method: 'POST',
        headers: {
          'Accept': 'application/json',
@@ -30,8 +30,8 @@ export default class LoginScreen extends Component {
        },
        body: JSON.stringify({
       
-         email: UserEmail,      
-         password: UserPassword,         
+         userID: 'aa',      
+         password: 'aa' 
       
        })
       
@@ -40,7 +40,7 @@ export default class LoginScreen extends Component {
              
             //decode json
                          // If server response message same as Data Matched
-            if(responseJson.message==='Data Match')
+            if(responseJson.message==='Data Matched')
              {
       
                  //Then open Profile activity and send user email to profile activity.
@@ -65,7 +65,7 @@ export default class LoginScreen extends Component {
                 <Text style= {styles.TextComponentStyle}>Đăng nhập</Text>          
                 <TextInput                  
                   // Adding hint in Text Input using Place holder.
-                  placeholder="Nhập email"         
+                  placeholder="Nhập mã nhân viên"         
                   onChangeText={UserEmail => this.setState({UserEmail})}         
                   // Making the Under line Transparent.
                   underlineColorAndroid='transparent'         
@@ -80,8 +80,15 @@ export default class LoginScreen extends Component {
                   underlineColorAndroid='transparent'         
                   style={styles.TextInputStyleClass}         
                   secureTextEntry={true}
-                />         
-                <Button title="Đăng nhập" onPress={this.UserLoginFunction} color="#2196F3" />         
+                />  
+                <View>
+                  <Button title="Đăng nhập" onPress={this.UserLoginFunction} color="#2196F3" />
+
+                  <Button title="Đăng ký" color="#2196F3" />        
+
+                </View>
+                        
+                
          
         </View>
                     

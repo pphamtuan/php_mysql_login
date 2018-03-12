@@ -68,3 +68,8 @@
 -dontwarn java.nio.file.*
 -dontwarn org.codehaus.mojo.animal_sniffer.IgnoreJRERequirement
 -dontwarn okio.**
+project.ext.vectoricons = [
+    iconFontNames: [ 'MaterialIcons.ttf', 'EvilIcons.ttf', 'FontAweSome.ttf ] // Name of the font files you want to copy
+]
+
+apply from: "../../node_modules/react-native-vector-icons/fonts.gradle"

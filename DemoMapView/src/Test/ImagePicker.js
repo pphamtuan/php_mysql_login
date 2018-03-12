@@ -13,7 +13,8 @@ import pickerImage from './ImagePickerAPI';
                     <Title>Image Picker</Title>
                   </Body>
                   <Content style = {{flex: 1, }}>                      
-                      <Button primary style = {{flex: 1, alignSelf: 'center' }} onPress = {this.show.bind()}>
+                      <Button primary style = {{flex: 1, alignSelf: 'center' }} 
+                      onPress = {this.show.bind()}>
                         <Text>Show Image</Text>                        
                       </Button>
                   </Content>

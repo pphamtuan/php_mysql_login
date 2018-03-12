@@ -1,27 +1,78 @@
-
 import React, { Component } from 'react';
-import {Platform, StyleSheet} from 'react-native';
-import {Text, View, Header} from 'native-base';
+import {StyleSheet, View, Text, Dimensions, InteractionManager,} from 'react-native';
+import {Container, Header, Title, Content, Footer, FooterTab, Button, Icon, Item, Input} from 'native-base';
 import MapView, {Marker, onRegionChange, onPress} from 'react-native-maps';
+import pickerImage from './ImagePickerAPI';
 
-export default class MapScreen extends Component {
+export default class App extends Component {
   constructor(props){
     super(props);
     arrayMarkers = [
       {
-        latitude: 10.558671,
-        longitude: 107.337684
+        latitude: 100,
+        longitude: 100
       }
     ];
     this.state={
       region:{
-        latitude: 10.8376571,
-        longitude: 106.6738338,
+        latitude: 100,
+        longitude: 100,
         latitudeDelta: 0.01,
         longitudeDelta: 0.01
       },
       markers: arrayMarkers,
+      loading: true,
+      currentPosition: {
+        latitude: 100,
+        longitude: 100
+      }
     }
+  }
+
+//
+componentWillMount(){
+  navigator.geolocation.getCurrentPosition(
+    (position)=>{
+      this.setState({
+        region:{
+          latitude: position.coords.latitude,
+          longitude: position.coords.longitude,
+          latitudeDelta: 0.01,
+          longitudeDelta: 0.01
+        },
+        currentPosition:{
+          latitude: position.coords.latitude,
+          longitude: position.coords.longitude
+        }
+      })
+    },
+    (error) => console.log(error),
+    {enableHighAccuracy: true, timeout: 2000, maximumAge: 1000}
+)
+}
+
+  componentDidMount(){
+    InteractionManager.runAfterInteractions(() => {
+      this.setState({ loading: false });
+    });
+    navigator.geolocation.getCurrentPosition(
+      (position)=>{
+        this.setState({
+          region:{
+            latitude: position.coords.latitude,
+            longitude: position.coords.longitude,
+            latitudeDelta: 0.01,
+            longitudeDelta: 0.01
+          },
+          currentPosition:{
+            latitude: position.coords.latitude,
+            longitude: position.coords.longitude
+          }
+        })
+      },
+      (error) => console.log(error),
+      {enableHighAccuracy: false, timeout: 2000}
+  );
   }
 
   onRegionChange(data){
@@ -52,23 +103,69 @@ export default class MapScreen extends Component {
   }
   render() {
     return (
-      <View style={styles.container}>
-        <Text>Hello</Text>
-        <MapView
-          style = {styles.map}
-          region = {this.state.region}
-          onRegionChange = {this.onRegionChange.bind(this)}
-          onPress = {this.onPress.bind(this)}
-        >
-          <MapView.Marker title = {'Toi o day'} 
-              description = {'day la mo ta'} 
-              coordinate = {this.state.region}
-          />
-          {this.renderMarkers()}
-        </MapView>
-      </View>
+      <Container>
+        <Header searchBar rounded>
+          <Item>
+            <Icon name="ios-search" />
+            <Input placeholder="Search" />
+            <Icon name="ios-people" />
+          </Item>
+          <Button transparent>
+            <Text>Search</Text>
+          </Button>
+        </Header>
+          <View style={styles.container}>
+            <MapView
+              style = {styles.map}
+              region = {this.state.region}
+              onRegionChange = {this.onRegionChange.bind(this)}
+              onPress = {this.onPress.bind(this)}
+            >
+              <MapView.Marker coordinate = {this.state.currentPosition}/>
+            </MapView>
+            <View style = {{flex: 1, flexDirection: 'row', position:'relative'}}>
+              <Button iconLeft transparent small primary style = {{flex: 1, 
+                    alignSelf: 'flex-end',  
+                    flexDirection: 'column', justifyContent: 'flex-end', marginBottom: 10,
+                    marginRight: 10}}
+                    onPress = {()=>navigator.geolocation.getCurrentPosition(
+                      (position)=>{
+                        this.setState({
+                          region:{
+                            latitude: position.coords.latitude,
+                            longitude: position.coords.longitude,
+                            latitudeDelta: 0.01,
+                            longitudeDelta: 0.01
+                          },
+                          currentPosition:{
+                            latitude: position.coords.latitude,
+                            longitude: position.coords.longitude
+                          }
+                        })
+                      },
+                      (error) => console.log(error),
+                      {enableHighAccuracy: false, timeout: 2000}
+                  )}>
+                      <Icon name = 'navigate' style = {{fontSize: 30}}></Icon>        
+                </Button>
+                <Button iconLeft transparent small primary style = {{flex: 1, 
+                    alignSelf: 'flex-end',  
+                    flexDirection: 'column', justifyContent: 'flex-end', marginBottom: 10,
+                    marginRight: 10}}
+                    onPress = {this.show.bind()}
+                     >
+                      <Icon name = 'camera' style = {{fontSize: 30}}></Icon>        
+                </Button>
+              </View>
+
+          </View>
+      </Container>
     );
   }
+  show(){
+    pickerImage(source=>this.setState({avatarSource: source}));
+  } 
+  
 }
 
 const styles = StyleSheet.create({
