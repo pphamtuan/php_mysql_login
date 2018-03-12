@@ -29,7 +29,7 @@ import RNFetchBlob from 'react-native-fetch-blob';
         pickerImage(source=>this.setState({avatarSource: source}));
       }        
       upload(){
-        RNFetchBlob.fetch('POST', 'http://www.example.com/upload-form', {
+        RNFetchBlob.fetch('POST', 'http://login-mysql.herokuapp.com/src/upload.php', {
             Authorization : "Bearer access-token",
             otherHeader : "foo",
             // this is required, otherwise it won't be process as a multipart/form-data request
