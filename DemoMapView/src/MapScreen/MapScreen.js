@@ -3,6 +3,7 @@ import {StyleSheet, View, Text, Dimensions, InteractionManager,} from 'react-nat
 import {Container, Header, Title, Content, Footer, FooterTab, Button, Icon, Item, Input} from 'native-base';
 import MapView, {Marker, onRegionChange, onPress} from 'react-native-maps';
 import pickerImage from './ImagePickerAPI';
+import RNFetchBlob from 'react-native-fetch-blob';
 
 export default class App extends Component {
   constructor(props){

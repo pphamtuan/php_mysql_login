@@ -13,12 +13,12 @@ import { Button } from 'react-native-vector-icons/dist/FontAwesome';
 
 export const HomeStack = StackNavigator({
         First: {
-            screen: LoginScreen,
+            screen: myTab,
             navigationOptions: {header: null}
             
         },
         Second:{
-            screen: myTab,
+            screen: LoginScreen,
             navigationOptions: { header: null  }
         },
     }
