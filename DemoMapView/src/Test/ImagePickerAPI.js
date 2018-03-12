@@ -11,9 +11,9 @@ var options = {
     }
   };
 //Image picker
- let pickerImage = () =>{
+ let pickerImage = (cb) =>{
     ImagePicker.showImagePicker(options, (response) => {
-      console.log('Response = ', response);
+      console.log('Response = ', response); 
     
       if (response.didCancel) {
         console.log('User cancelled image picker');
@@ -26,6 +26,7 @@ var options = {
       }
       else {
         let source = { uri: response.uri };
+        cb(source, response.data);
     
         // You can also display the image using data:
         // let source = { uri: 'data:image/jpeg;base64,' + response.data };          

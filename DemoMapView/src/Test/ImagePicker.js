@@ -5,6 +5,13 @@ import pickerImage from './ImagePickerAPI';
 import RNFetchBlob from 'react-native-fetch-blob';
 
   export default class ImagePickerApp extends Component{
+      constructor(props){
+          super(props);
+          this.state = {
+              avatarSource: null,
+              data: null
+          }
+      }
       render(){
           return(
               <Container>
@@ -26,7 +33,7 @@ import RNFetchBlob from 'react-native-fetch-blob';
           );
       }
       show(){
-        pickerImage(source=>this.setState({avatarSource: source}));
+        pickerImage((source,data)=>this.setState({avatarSource: source, data: data}));
       }        
       upload(){
         RNFetchBlob.fetch('POST', 'http://login-mysql.herokuapp.com/src/upload.php', {
@@ -34,7 +41,10 @@ import RNFetchBlob from 'react-native-fetch-blob';
             otherHeader : "foo",
             // this is required, otherwise it won't be process as a multipart/form-data request
             'Content-Type' : 'multipart/form-data',
-          }, [{ name : 'info', data : 'KhoaPham'}])
+          }, [
+                { name : 'info', data : 'KhoaPham'},
+                { name : 'avatar', filename : 'avatar.png', data: this.state.data},
+        ])
           .then(res => console.log(res))
           .catch(err => console.log(err))
       }
